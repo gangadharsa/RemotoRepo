@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Students Data</title>
+    {% include 'cdnlines.html' %}
+    <style>
+        input{
+            margin-top:10px;
+        }
+        th{
+            color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="text-center text-capitalize text-danger" >please enter data......</h3>
+            <form method="post">
+                {% csrf_token %}
+                <!--<label>Enter First Name:</label>-->
+                <input type="text" name="fname" class="form-control" placeholder="First Name">
+
+                <!--<label>Enter Last Name:</label>-->
+                <input type="text" name="lname" class="form-control" placeholder="Last Name">
+
+                <!--<label>Enter Class Name:</label>-->
+                <input type="text" name="cname" class="form-control" placeholder="Class" value="10th" readonly>
+
+                <!--<label>Enter Section Name:</label>-->
+                <input type="text" name="section" class="form-control" placeholder="Section" value="A" readonly>
+
+                <!--<label>Enter Mobile No:</label>-->
+                <input type="number" name="mobile" class="form-control" placeholder="Mobile No">
+
+                <!--<label>Enter Mail Id</label>-->
+                <input type="text" name="email" class="form-control" placeholder="Email">
+
+                <!--<label>Enter Odia Mark</label>-->
+                <input type="number" name="odia" class="form-control" placeholder="Odia Mark">
+
+                <!--<label>Enter Hindi Mark</label>-->
+                <input type="number" name="hindi" class="form-control" placeholder="Hindi Mark">
+
+                <!--<label>Enter English Mark</label>-->
+                <input type="number" name="eng" class="form-control" placeholder="English Mark">
+
+                <center>
+                    <input type="submit" value="Insert" class="btn bg-success">
+                    <input type="reset" value="Clear" class="btn bg-danger">
+                </center>
+
+            </form>
+        </div>
+
+
+        <div class="col-md-8">
+            {% if students %}
+                <h3 class="text-capitalize text-success text-center"> displaying data</h3>
+                <table class="table table-bordered text-center text-capitalize ">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Class Name</th>
+                    <th>Section</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Odia</th>
+                    <th>Hindi</th>
+                    <th>English</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for student in students %}
+                    <tr>
+                    <td>{{ student.first_name }}</td>
+                    <td>{{ student.last_name }}</td>
+                    <td>{{ student.class_name }}</td>
+                    <td>{{ student.section }}</td>
+                    <td>{{ student.mob }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.odia }}</td>
+                    <td>{{ student.hindi }}</td>
+                    <td>{{ student.eng }}</td>
+                    <td><a  class="btn btn-success" href="{% url 'update' student.id %}">Update</a><a class="btn btn-danger" href="{%  url 'delete' student.id %} ">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+                {% else %}
+                <h3>No Data Available</h3>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Update Data</title>
+    {% include 'cdnlines.html' %}
+    <style>
+        input{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <h3 class="text-center text-capitalize text-danger" >please update data......</h3>
+            <form method="post" action="">
+                {% csrf_token %}
+                <!--<label>Enter First Name:</label>-->
+                <input type="text" name="fname" class="form-control" placeholder="First Name" value="{{ student.first_name }}">
+
+                <!--<label>Enter Last Name:</label>-->
+                <input type="text" name="lname" class="form-control" placeholder="Last Name" value="{{ student.last_name }}">
+
+                <!--<label>Enter Class Name:</label>-->
+                <input type="text" name="cname" class="form-control" placeholder="Class" value="{{ student.class_name }}">
+
+                <!--<label>Enter Section Name:</label>-->
+                <input type="text" name="section" class="form-control" placeholder="Section" value="{{ student.section }}">
+
+                <!--<label>Enter Mobile No:</label>-->
+                <input type="number" name="mobile" class="form-control" placeholder="Mobile No" value="{{ student.mob }}">
+
+                <!--<label>Enter Mail Id</label>-->
+                <input type="text" name="email" class="form-control" placeholder="Email" value="{{ student.email }}">
+
+                <!--<label>Enter Odia Mark</label>-->
+                <input type="number" name="odia" class="form-control" placeholder="Odia Mark" value="{{ student.odia }}">
+
+                <!--<label>Enter Hindi Mark</label>-->
+                <input type="number" name="hindi" class="form-control" placeholder="Hindi Mark" value="{{ student.hindi }}">
+
+                <!--<label>Enter English Mark</label>-->
+                <input type="number" name="eng" class="form-control" placeholder="English Mark" value="{{ student.eng }}">
+
+                <center>
+                    <input type="submit" value="Update" class="btn bg-success">
+                    <input type="reset" value="Clear" class="btn bg-danger">
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
